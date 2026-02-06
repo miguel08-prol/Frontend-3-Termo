@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Cartão de Visitas</title>
+    <style>
+        :root {
+            --card-bg: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 50px;
+            background-color: #f0f2f5;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .card {
+            width: 350px;
+            height: 200px;
+            background-color: var(--card-bg); 
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card h2 { margin: 0; font-size: 1.8rem; }
+        .card p { margin: 5px 0 0; opacity: 0.8; font-size: 1.1rem; }
+
+        select, input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h3>Dados do Cartão</h3>
+        <input type="text" id="nomeInput" placeholder="Nome Completo" oninput="atualizar()">
+        <input type="text" id="cargoInput" placeholder="Cargo ou Profissão" oninput="atualizar()">
+        
+        <label for="corSelect">Escolha uma cor:</label>
+        <select id="corSelect" oninput="atualizar()">
+            <option value="#333">Grafite (Padrão)</option>
+            <option value="#2c3e50">Azul Noturno</option>
+            <option value="#27ae60">Verde Esmeralda</option>
+            <option value="#e67e22">Laranja Cenoura</option>
+            <option value="#8e44ad">Roxo Ametista</option>
+        </select>
+    </div>
+
+    <div class="card" id="cartao">
+        <h2 id="previewNome">Seu Nome</h2>
+        <p id="previewCargo">Seu Cargo</p>
+    </div>
+
+    <script>
+        function atualizar() {
+            const nome = document.getElementById('nomeInput').value;
+            const cargo = document.getElementById('cargoInput').value;
+            const cor = document.getElementById('corSelect').value;
+
+            document.getElementById('previewNome').innerText = nome || "Seu Nome";
+            document.getElementById('previewCargo').innerText = cargo || "Seu Cargo";
+            document.documentElement.style.setProperty('--card-bg', cor);
+        }
+    </script>
+
+</body>
+</html>

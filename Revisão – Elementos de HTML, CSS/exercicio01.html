@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor de Temperatura Dinâmico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.5s ease; /* Transição suave de cor */
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Conversor de Temperatura</h2>
+        <input type="number" id="celsiusInput" placeholder="Graus Celsius (°C)">
+        <button onclick="converter()">Converter</button>
+        <p id="resultado">O resultado aparecerá aqui.</p>
+    </div>
+
+    <script>
+        function converter() {
+            const input = document.getElementById('celsiusInput');
+            const resultadoTxt = document.getElementById('resultado');
+            const corpoPagina = document.body;
+
+            const celsius = parseFloat(input.value);
+
+            if (isNaN(celsius)) {
+                resultadoTxt.innerText = "Por favor, digite um número válido.";
+                return;
+            }
+
+            const fahrenheit = (celsius * 1.8) + 32;
+
+            resultadoTxt.innerText = `Resultado: ${fahrenheit.toFixed(1)} °F`;
+
+            if (fahrenheit > 80) {
+                corpoPagina.style.backgroundColor = "coral";
+            } else {
+                corpoPagina.style.backgroundColor = "lightskyblue";
+            }
+        }
+    </script>
+
+</body>
+</html>
