@@ -1,0 +1,49 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nome1{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    width: 800px;
+    background-color: aquamarine;   
+}
+
+.nome2{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 180px;
+    width: 700px;
+    background-color: burlywood;
+    border: 2px solid black;
+}
+.nome3{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 180px;
+    width: 700px;
+    background-color: chartreuse;
+    border: 2px solid black;
+}
+.nome4{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 180px;
+    width: 700px;
+    background-color: cadetblue;
+    border: 2px solid black;
+}
+.nome5{
+    height: 80px;
+    width: 90px;
+    background-color: coral;
+    border: 2px solid black;
+}
