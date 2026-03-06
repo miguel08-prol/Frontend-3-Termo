@@ -1,0 +1,105 @@
+:root {
+    --bg-color: #fafafa;
+    --border-color: #dbdbdb;
+    --text-main: #262626;
+    --text-secondary: #8e8e8e;
+    --white: #ffffff;
+    --blue: #0095f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, system-ui, sans-serif;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+*::-webkit-scrollbar { display: none !important; }
+
+body { background-color: var(--bg-color); color: var(--text-main); }
+
+.navbar {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    height: 60px;
+    position: fixed;
+    top: 0; width: 100%; z-index: 1000;
+    display: flex; justify-content: center;
+}
+
+.nav-container {
+    width: 100%; max-width: 975px; padding: 0 20px;
+    display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-icons { display: flex; gap: 22px; align-items: center; }
+
+.nav-icons i, .nav-icons svg {
+    stroke: #000000 !important;
+    width: 24px; height: 24px;
+}
+
+.nav-active { stroke-width: 3px !important; fill: rgba(0,0,0,0.05); }
+
+.profile-pic-nav { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
+
+.activity-container {
+    max-width: 600px;
+    margin: 80px auto 0;
+    padding: 20px;
+}
+
+h2 { margin-bottom: 20px; font-size: 24px; }
+
+.activity-section { margin-bottom: 24px; }
+
+h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.activity-text {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.time { color: var(--text-secondary); margin-left: 4px; }
+
+.post-preview {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.follow-btn {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.follow-btn:active { opacity: 0.7; }

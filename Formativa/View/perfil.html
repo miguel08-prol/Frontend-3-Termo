@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil • PixelGram</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="/Formativa/icon/favicon.svg">
+    <link rel="stylesheet" href="/Formativa/assets/css/perfil.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/main.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+           <a href="index.html" class="logo">Pixel<span>Gram</span></a>
+            <input type="text" class="search-bar" placeholder="Pesquisar">
+            <div class="nav-icons">
+                <a href="index.html"><i data-lucide="home"></i></a>
+                <a href="mensagens.html"><i data-lucide="message-circle"></i></a>
+                <i data-lucide="plus-square"></i>
+                <a href="explorar.html"><i data-lucide="compass"></i></a>
+                <a href="atividade.html"><i data-lucide="heart" class="nav-active"></i></a>
+                <a href="perfil.html"><img src="https://i.pravatar.cc/150?u=me" class="profile-pic-nav"></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="profile-main">
+        <header class="profile-header">
+            <div class="profile-image-container">
+                <div class="profile-img-gradient">
+                    <img src="https://i.pravatar.cc/150?u=me" alt="Sua Foto" class="profile-image">
+                </div>
+            </div>
+            
+            <section class="profile-info">
+                <div class="profile-user-settings">
+                    <h2 class="profile-username">Tião_Brado02312</h2>
+                    <div class="profile-actions">
+                        <button class="btn-edit-profile">Editar perfil</button>
+                        <button class="btn-edit-profile">Ver arquivo</button>
+                        <i data-lucide="settings" class="settings-icon"></i>
+                    </div>
+                </div>
+
+                <div class="profile-stats">
+                    <span><strong>12</strong> publicações</span>
+                    <span><strong>450</strong> seguidores</span>
+                    <span><strong>380</strong> seguindo</span>
+                </div>
+
+                <div class="profile-bio">
+                    <h1 class="profile-real-name">Nome de Exibição</h1>
+                    <p>Entusiasta de tecnologia e design 🚀</p>
+                    <p class="bio-link">🔗 <a href="#">github.com/seu-perfil</a></p>
+                </div>
+            </section>
+        </header>
+
+        <div class="highlights-container">
+            <div class="highlight-item">
+                <div class="highlight-img-border"><img src="https://picsum.photos/id/10/100"></div>
+                <span>Viagens</span>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-img-border"><img src="https://picsum.photos/id/20/100"></div>
+                <span>Setup</span>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-img-border"><div class="add-highlight"><i data-lucide="plus"></i></div></div>
+                <span>Novo</span>
+            </div>
+        </div>
+
+        <div class="profile-tabs">
+            <div class="tab-item active"><i data-lucide="grid"></i> PUBLICAÇÕES</div>
+            <div class="tab-item"><i data-lucide="play-square"></i> REELS</div>
+            <div class="tab-item"><i data-lucide="user-square"></i> MARCADOS</div>
+        </div>
+
+        <div class="profile-grid">
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500">
+                <div class="grid-item-overlay">
+                    <span><i data-lucide="heart" class="fill-black"></i> 152</span>
+                    <span><i data-lucide="message-circle" class="fill-white"></i> 12</span>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500">
+                <div class="grid-item-overlay">
+                    <span><i data-lucide="heart" class="fill-white"></i> 89</span>
+                    <span><i data-lucide="message-circle" class="fill-white"></i> 5</span>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500">
+                <div class="grid-item-overlay">
+                    <span><i data-lucide="heart" class="fill-white"></i> 210</span>
+                    <span><i data-lucide="message-circle" class="fill-white"></i> 34</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/Formativa/assets/js/perfil.js"></script>
+</body>
+</html>

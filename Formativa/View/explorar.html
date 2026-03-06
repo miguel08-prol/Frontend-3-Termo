@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorar • PixelGram</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="/Formativa/icon/favicon.svg">
+    <link rel="stylesheet" href="/Formativa/assets/css/explorar.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/main.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+           <a href="index.html" class="logo">Pixel<span>Gram</span></a>
+            <div class="search-container">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" class="search-bar" placeholder="Pesquisar">
+            </div>
+           <div class="nav-icons">
+                <a href="index.html"><i data-lucide="home"></i></a>
+                <a href="mensagens.html"><i data-lucide="message-circle"></i></a>
+                <i data-lucide="plus-square"></i>
+                <a href="explorar.html"><i data-lucide="compass"></i></a>
+                <a href="atividade.html"><i data-lucide="heart" class="nav-active"></i></a>
+                <a href="perfil.html"><img src="https://i.pravatar.cc/150?u=me" class="profile-pic-nav"></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="explore-container">
+        <div class="explore-grid">
+            <div class="grid-item"><img src="https://picsum.photos/id/10/500/500"></div>
+            <div class="grid-item"><img src="https://picsum.photos/id/20/500/500"></div>
+            <div class="grid-item tall"><img src="https://picsum.photos/id/30/500/1000"></div>
+            <div class="grid-item"><img src="https://picsum.photos/id/40/500/500"></div>
+            <div class="grid-item"><img src="https://picsum.photos/id/50/500/500"></div>
+
+            <div class="grid-item tall"><img src="https://picsum.photos/id/60/500/1000"></div>
+            <div class="grid-item"><img src="https://picsum.photos/id/70/500/500"></div>
+            <div class="grid-item"><img src="https://picsum.photos/id/80/500/500"></div>
+            <div class="grid-item"><img src="https://picsum.photos/id/90/500/500"></div>
+            <div class="grid-item"><img src="https://picsum.photos/id/100/500/500"></div>
+        </div>
+    </main>
+
+    <div id="createModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="close-btn" onclick="closeCreateModal()">Cancelar</button>
+            <h3>Criar nova publicação</h3>
+            <button class="share-btn" id="shareBtn" style="display: none;">Compartilhar</button>
+        </div>
+        
+        <div class="modal-body" id="dropZone">
+            <div id="uploadPrompt">
+                <i data-lucide="image"></i>
+                <p>Arraste as fotos e os vídeos aqui</p>
+                <button class="select-file-btn" onclick="document.getElementById('fileInput').click()">
+                    Selecionar no computador
+                </button>
+                <input type="file" id="fileInput" hidden accept="image/*,video/*">
+            </div>
+            
+            <div id="imagePreviewContainer" style="display: none;">
+                <img id="imagePreview" src="" alt="Preview">
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="/Formativa/assets/js/explorar.js"></script>
+</body>
+</html>

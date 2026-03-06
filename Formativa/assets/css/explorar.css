@@ -1,0 +1,128 @@
+:root {
+    --bg-color: #fafafa;
+    --border-color: #dbdbdb;
+    --text-main: #262626;
+    --text-secondary: #8e8e8e;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+}
+
+.navbar {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    height: 60px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 975px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #efefef;
+    border-radius: 8px;
+    padding: 0 16px;
+    height: 36px;
+}
+
+.search-icon {
+    width: 16px;
+    color: var(--text-secondary);
+}
+
+.search-bar {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    font-size: 14px;
+    width: 220px;
+    outline: none;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+}
+
+.nav-icons i {
+    cursor: pointer;
+    width: 24px;
+}
+
+.profile-pic-nav {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.explore-container {
+    max-width: 975px;
+    margin: 80px auto 0;
+    padding: 0 20px;
+}
+
+.explore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 300px;
+    gap: 28px;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #eee;
+}
+
+.grid-item.tall {
+    grid-row: span 2;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.nav-active {
+    fill: black;
+    stroke-width: 3px;
+}
+
+@media (max-width: 768px) {
+    .explore-grid {
+        grid-auto-rows: 130px;
+        gap: 3px;
+    }
+    .explore-container { padding: 0; }
+    .search-container { display: none; }
+}
+

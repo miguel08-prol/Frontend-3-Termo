@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens • PixelGram</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="/Formativa/icon/favicon.svg">
+    <link rel="stylesheet" href="/Formativa/assets/css/mensagens.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/main.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+           <a href="index.html" class="logo">Pixel<span>Gram</span></a>
+             <div class="nav-icons">
+                <a href="index.html"><i data-lucide="home"></i></a>
+                <a href="mensagens.html"><i data-lucide="message-circle"></i></a>
+                <i data-lucide="plus-square"></i>
+                <a href="explorar.html"><i data-lucide="compass"></i></a>
+                <a href="atividade.html"><i data-lucide="heart" class="nav-active"></i></a>
+                <a href="perfil.html"><img src="https://i.pravatar.cc/150?u=me" class="profile-pic-nav"></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="messenger-container">
+        <div class="messenger-box">
+            <aside class="chat-list">
+                <div class="chat-list-header">
+                    <span class="current-user">meu_usuario <i data-lucide="chevron-down"></i></span>
+                    <i data-lucide="edit"></i>
+                </div>
+                <div class="chats">
+                    <div class="chat-item active">
+                        <img src="https://i.pravatar.cc/150?u=1" alt="User">
+                        <div class="chat-info">
+                            <span class="chat-name">usuario1</span>
+                            <span class="chat-last-msg">Enviou uma mensagem • 12min</span>
+                        </div>
+                    </div>
+                    <div class="chat-item">
+                        <img src="https://i.pravatar.cc/150?u=2" alt="User">
+                        <div class="chat-info">
+                            <span class="chat-name">natureza_viva</span>
+                            <span class="chat-last-msg">Viu a sua mensagem</span>
+                        </div>
+                    </div>
+                    </div>
+            </aside>
+
+            <section class="chat-window">
+                <div class="chat-window-header">
+                    <div class="header-info">
+                        <img src="https://i.pravatar.cc/150?u=1" class="user-avatar">
+                        <span class="username">usuario1</span>
+                    </div>
+                    <div class="header-actions">
+                        <i data-lucide="phone"></i>
+                        <i data-lucide="video"></i>
+                        <i data-lucide="info"></i>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message received">Olá! Tudo bem?</div>
+                    <div class="message sent">Tudo ótimo! E contigo?</div>
+                    <div class="message received">Viste o post que te enviei?</div>
+                </div>
+
+                <div class="chat-input-area">
+                    <div class="input-wrapper">
+                        <i data-lucide="smile"></i>
+                        <input type="text" id="messageInput" placeholder="Escreva uma mensagem...">
+                        <div class="input-actions">
+                            <i data-lucide="image"></i>
+                            <i data-lucide="heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="createModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="close-btn" onclick="closeCreateModal()">Cancelar</button>
+            <h3>Criar nova publicação</h3>
+            <button class="share-btn" id="shareBtn" style="display: none;">Compartilhar</button>
+        </div>
+        
+        <div class="modal-body" id="dropZone">
+            <div id="uploadPrompt">
+                <i data-lucide="image"></i>
+                <p>Arraste as fotos e os vídeos aqui</p>
+                <button class="select-file-btn" onclick="document.getElementById('fileInput').click()">
+                    Selecionar no computador
+                </button>
+                <input type="file" id="fileInput" hidden accept="image/*,video/*">
+            </div>
+            
+            <div id="imagePreviewContainer" style="display: none;">
+                <img id="imagePreview" src="" alt="Preview">
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="/Formativa/assets/js/mensagens.js"></script>
+</body>
+</html>
