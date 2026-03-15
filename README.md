@@ -1,4 +1,4 @@
-# 🚀 Nome do Teu Projeto
+# 🚀 Frontend-3-Termo
 > Uma breve e cativante descrição do que o teu projeto faz. Ex: "Uma interface moderna e responsiva para gestão de tarefas, focada em produtividade e UX."
 
 ![Status do Projeto](https://img.shields.io/badge/Status-Concluído-success?style=for-the-badge)
@@ -41,16 +41,3 @@ O projeto foi construído utilizando as seguintes ferramentas e tecnologias:
 * **[Figma](https://www.figma.com/)** - Prototipagem e design da interface.
 
 ---
-
-## ⚙️ Como Executar o Projeto
-
-Se quiseres testar este projeto na tua máquina, segue estes passos simples:
-
-### Pré-requisitos
-Apenas precisas de um navegador moderno (Chrome, Edge, Firefox) e de um editor de código (como o VS Code). Caso uses pacotes npm, avisa aqui que é preciso o Node.js.
-
-### Passos
-
-1. Clona este repositório:
-   ```bash
-   git clone [https://github.com/teu-usuario/nome-do-repositorio.git](https://github.com/teu-usuario/nome-do-repositorio.git)
