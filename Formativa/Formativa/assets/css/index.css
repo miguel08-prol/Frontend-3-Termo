@@ -1,0 +1,488 @@
+/* ==========================================
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================== */
+:root {
+    --bg-color: #fafafa;
+    --border-color: #dbdbdb;
+    --text-main: #262626;
+    --text-secondary: #8e8e8e;
+    --link-blue: #0095f6;
+    --white: #ffffff;
+    --insta-gradient: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column; /* Ajuda a empilhar o header mobile no celular */
+    min-height: 100vh;
+}
+
+/* ==========================================
+   2. LAYOUT DA SIDEBAR (DESKTOP)
+   ========================================== */
+.sidebar {
+    width: 245px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: var(--white);
+    border-right: 1px solid var(--border-color);
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.logo-container {
+    padding: 25px 12px;
+    margin-bottom: 10px;
+}
+
+.sidebar-links {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.side-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    text-decoration: none;
+    color: var(--text-main);
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.side-item:hover {
+    background-color: #f2f2f2;
+}
+
+.side-item i, .side-item svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2px;
+}
+
+.side-item span {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.profile-pic-side {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+}
+
+.sidebar-more {
+    margin-top: auto; 
+}
+
+/* ==========================================
+   3. CONTEÚDO PRINCIPAL E FEED
+   ========================================== */
+.main-content {
+    margin-left: 245px; /* Abre espaço para a sidebar lateral no PC */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.feed-container {
+    max-width: 470px;
+    width: 100%;
+}
+
+/* --- BARRA DE STORIES --- */
+.stories-bar {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+}
+
+.stories-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.story-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    min-width: 66px;
+}
+
+.story-ring {
+    width: 66px;
+    height: 66px;
+    background: var(--insta-gradient);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.story-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+}
+
+.story-item span {
+    font-size: 12px;
+    max-width: 74px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* --- DESIGN DOS POSTS --- */
+.post {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.post-header {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.username {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.post-content {
+    position: relative;
+    cursor: pointer;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+}
+
+.post-content img, .post-content video {
+    width: 100%;
+    max-height: 585px;
+    object-fit: cover;
+}
+
+/* --- SISTEMA DE CARROSSEL --- */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-track .post-content {
+    min-width: 100%; /* Cada foto do carrossel ocupa 100% da tela */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    z-index: 10;
+    opacity: 0; 
+    transition: opacity 0.2s;
+}
+
+.carousel-container:hover .carousel-btn {
+    opacity: 1; /* Mostra botões apenas quando passa o mouse */
+}
+
+.carousel-btn.left { left: 10px; }
+.carousel-btn.right { right: 10px; }
+
+.carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    z-index: 10;
+}
+
+.carousel-dots .dot {
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.carousel-dots .dot.active {
+    background: #fff;
+}
+
+/* --- ANIMAÇÃO DO CORAÇÃO (DUPLO CLIQUE) --- */
+.heart-pop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    fill: white;
+}
+
+.heart-pop.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* --- RODAPÉ DOS POSTS E AÇÕES --- */
+.post-footer {
+    padding: 12px;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.actions-left {
+    display: flex;
+    gap: 16px;
+}
+
+.post-actions i {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.icon-active-heart {
+    fill: #ed4956 !important;
+    stroke: #ed4956 !important;
+}
+
+.icon-active-save {
+    fill: #262626 !important;
+}
+
+.likes-count {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* ==========================================
+   4. MODAL DE STORIES REALISTAS
+   ========================================== */
+.story-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #111111; /* Fundo preto sólido */
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.story-viewer {
+    width: 100%;
+    max-width: 400px;
+    height: 90vh;
+    position: relative;
+    background: #000; 
+    border-radius: 8px; 
+    overflow: hidden;
+}
+
+.story-viewer-content {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Barras de progresso fracionadas no topo */
+.story-progress-container {
+    position: absolute;
+    top: 15px; 
+    left: 10px; 
+    right: 10px;
+    display: flex;
+    gap: 4px;
+    z-index: 2100;
+}
+
+.story-progress-segment {
+    flex: 1;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.story-progress-fill {
+    height: 100%;
+    background: white;
+    width: 0%;
+}
+
+/* Áreas invisíveis de toque na tela (para celular) */
+.story-nav {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    z-index: 2050;
+    cursor: pointer;
+}
+.story-nav.left { left: 0; }
+.story-nav.right { right: 0; width: 70%; }
+
+/* Botão de Fechar o Story */
+.close-story {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    cursor: pointer;
+    z-index: 2100;
+}
+
+/* Setinhas visíveis (Para usar no PC) */
+.story-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2200;
+    color: white;
+    transition: background 0.2s ease;
+}
+
+.story-arrow:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.story-arrow.left { left: 20px; }
+.story-arrow.right { right: 20px; }
+
+/* ==========================================
+   5. RESPONSIVIDADE E MOBILE
+   ========================================== */
+
+/* Header Mobile (Escondido no PC por padrão) */
+.mobile-header {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; /* Fixa no topo ao dar scroll */
+    top: 0;
+    z-index: 900;
+}
+
+/* Camada escura que aparece quando o menu abre no celular */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 950;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+/* --- ATIVA O MODO CELULAR / TABLET --- */
+@media (max-width: 768px) {
+    .mobile-header {
+        display: flex; /* Mostra o cabeçalho no celular */
+    }
+    
+    .sidebar {
+        transform: translateX(-100%); /* Joga o menu lateral pra fora da tela */
+        transition: transform 0.3s ease; /* Animação de deslizar suave */
+    }
+    
+    .sidebar.show-sidebar {
+        transform: translateX(0); /* Traz o menu de volta quando ativado */
+    }
+    
+    .main-content {
+        margin-left: 0; /* Remove a margem da esquerda (Corrige o buraco branco) */
+        padding-top: 15px;
+    }
+
+    .feed-container {
+        padding: 0 10px; /* Dá uma borda para os posts não grudarem na tela */
+    }
+}

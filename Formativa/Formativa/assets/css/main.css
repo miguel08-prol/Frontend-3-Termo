@@ -1,0 +1,132 @@
+html, body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+* {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+*::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.nav-icons i, 
+.nav-icons svg {
+    stroke: #000000 !important;
+    color: #000000 !important;
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.nav-active {
+    fill: rgba(0,0,0,0.05);
+    stroke-width: 3px !important;
+}
+
+.nav-icons a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Grand-Hotel', cursive;
+    font-size: 32px;
+    text-decoration: none;
+    font-weight: 400;
+    color: #0095f6; 
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.logo span {
+    background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    width: 450px;
+    height: 450px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay[style*="display: flex"] .modal-content {
+    transform: scale(1);
+}
+
+.modal-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.modal-body i {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    stroke: url(#insta-gradient-svg);
+}
+
+.modal-body p {
+    font-size: 18px;
+    color: #262626;
+    margin-bottom: 20px;
+}
+
+.select-file-btn {
+    background: linear-gradient(45deg, #f09433, #bc1888);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(188, 24, 136, 0.3);
+    transition: transform 0.2s;
+}
+
+.select-file-btn:hover {
+    transform: translateY(-2px);
+}

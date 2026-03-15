@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade • PixelGram</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="/Formativa/icon/favicon.svg">
+    
+    <link rel="stylesheet" href="/Formativa/assets/css/main.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/index.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/atividade.css">
+</head>
+<body>
+
+    <header class="mobile-header">
+        <a href="index.html" class="logo">Pixel<span>Gram</span></a>
+        <i data-lucide="menu" onclick="toggleSidebar()" style="cursor: pointer;"></i>
+    </header>
+
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <div id="sidebar-placeholder"></div>
+
+    <main class="main-content">
+        <div class="activity-container">
+            <h2>Notificações</h2>
+            
+            <section class="activity-section">
+                <h3>Hoje</h3>
+                
+                <div class="activity-item">
+                    <img src="https://i.pravatar.cc/150?u=10" class="user-avatar">
+                    <div class="activity-text">
+                        <strong>joao_silva</strong> começou a seguir você. <span class="time">2h</span>
+                    </div>
+                    <button class="btn-follow" onclick="toggleFollow(this)">Seguir</button>
+                </div>
+
+                <div class="activity-item">
+                    <img src="https://i.pravatar.cc/150?u=11" class="user-avatar">
+                    <div class="activity-text">
+                        <strong>maria_fotografia</strong> curtiu sua publicação. <span class="time">4h</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=100" class="post-preview">
+                </div>
+            </section>
+
+            <section class="activity-section">
+                <h3>Esta semana</h3>
+                
+                <div class="activity-item">
+                    <img src="https://i.pravatar.cc/150?u=12" class="user-avatar">
+                    <div class="activity-text">
+                        <strong>dev_master</strong> comentou: "Incrível! 🔥" <span class="time">2d</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=100" class="post-preview">
+                </div>
+
+                <div class="activity-item">
+                    <img src="https://i.pravatar.cc/150?u=13" class="user-avatar">
+                    <div class="activity-text">
+                        <strong>ana_design</strong> começou a seguir você. <span class="time">3d</span>
+                    </div>
+                    <button class="btn-follow following" onclick="toggleFollow(this)">Seguindo</button>
+                </div>
+            </section>
+
+            <section class="activity-section">
+                <h3>Este mês</h3>
+                
+                <div class="activity-item">
+                    <img src="https://i.pravatar.cc/150?u=30" class="user-avatar">
+                    <div class="activity-text">
+                        <strong>tech_news</strong> mencionou você em um comentário: "Dá uma olhada nisso!" <span class="time">3 sem</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=100" class="post-preview">
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <script src="/Formativa/assets/js/atividade.js"></script>
+</body>
+</html>

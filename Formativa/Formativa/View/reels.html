@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Reels • PixelGram</title>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="/Formativa/icon/favicon.svg">
+    <link rel="stylesheet" href="/Formativa/assets/css/index.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/main.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/reels.css">
+</head>
+<body>
+
+    <div id="sidebar-placeholder"></div>
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+ <header class="mobile-header">
+        <a href="index.html" class="logo">Pixel<span>Gram</span></a>
+        
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <a href="reels.html" style="color: inherit;">
+                <i data-lucide="play-square" style="cursor: pointer;"></i>
+            </a>
+            <i data-lucide="menu" onclick="toggleSidebar()" style="cursor: pointer;"></i>
+        </div>
+    </header>
+
+    <main class="reels-wrapper" id="reelsWrapper">
+
+        <div class="reel-container">
+            <div class="video-box">
+                <video class="reel-video" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop playsinline></video>
+                <i data-lucide="heart" class="big-heart"></i>
+                <div class="play-pause-icon"><i data-lucide="play" fill="white" stroke="white" style="width: 32px; height: 32px;"></i></div>
+                <div class="video-overlay">
+                    <div class="reel-info">
+                        <div class="user-header">
+                            <img src="https://i.pravatar.cc/150?img=11" alt="Usuário">
+                            <a href="#" class="username">natureza.incrivel</a>
+                            <button class="follow-btn">Seguir</button>
+                        </div>
+                        <p class="reel-caption">Olha que flor maravilhosa! 🌸✨ #natureza #reels</p>
+                        <div class="audio-track"><i data-lucide="music"></i><marquee scrollamount="3">Áudio original - natureza.incrivel</marquee></div>
+                    </div>
+                    <div class="reel-actions">
+                        <button class="action-btn like-btn" onclick="toggleReelLike(this)"><i data-lucide="heart"></i><span class="likes-count">12.4K</span></button>
+                        <button class="action-btn"><i data-lucide="message-circle"></i><span>450</span></button>
+                        <button class="action-btn"><i data-lucide="send"></i></button>
+                        <button class="action-btn"><i data-lucide="more-vertical"></i></button>
+                        <img src="https://i.pravatar.cc/150?img=11" class="audio-album">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reel-container">
+            <div class="video-box">
+                <video class="reel-video" src="https://www.w3schools.com/html/mov_bbb.mp4" loop playsinline></video>
+                <i data-lucide="heart" class="big-heart"></i>
+                <div class="play-pause-icon"><i data-lucide="play" fill="white" stroke="white" style="width: 32px; height: 32px;"></i></div>
+                <div class="video-overlay">
+                    <div class="reel-info">
+                        <div class="user-header">
+                            <img src="https://i.pravatar.cc/150?img=33" alt="Usuário">
+                            <a href="#" class="username">coelho_animado</a>
+                            <button class="follow-btn">Seguir</button>
+                        </div>
+                        <p class="reel-caption">Big Buck Bunny aprontando! 🐰🎬 #animacao</p>
+                        <div class="audio-track"><i data-lucide="music"></i><span>Som original</span></div>
+                    </div>
+                    <div class="reel-actions">
+                        <button class="action-btn like-btn" onclick="toggleReelLike(this)"><i data-lucide="heart"></i><span class="likes-count">8.1K</span></button>
+                        <button class="action-btn"><i data-lucide="message-circle"></i><span>212</span></button>
+                        <button class="action-btn"><i data-lucide="send"></i></button>
+                        <button class="action-btn"><i data-lucide="more-vertical"></i></button>
+                        <img src="https://i.pravatar.cc/150?img=33" class="audio-album">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reel-container">
+            <div class="video-box">
+                <video class="reel-video" src="/Formativa/video/praia.mp4" loop playsinline></video>
+                <i data-lucide="heart" class="big-heart"></i>
+                <div class="play-pause-icon"><i data-lucide="play" fill="white" stroke="white" style="width: 32px; height: 32px;"></i></div>
+                <div class="video-overlay">
+                    <div class="reel-info">
+                        <div class="user-header">
+                            <img src="https://i.pravatar.cc/150?img=47" alt="Usuário">
+                            <a href="#" class="username">viagens_de_sonho</a>
+                            <button class="follow-btn">Seguir</button>
+                        </div>
+                        <p class="reel-caption">A melhor praia de sempre! 🏖️☀️ #ferias #verao</p>
+                        <div class="audio-track"><i data-lucide="music"></i><span>Música de Verão - DJ Sun</span></div>
+                    </div>
+                    <div class="reel-actions">
+                        <button class="action-btn like-btn" onclick="toggleReelLike(this)"><i data-lucide="heart"></i><span class="likes-count">45.2K</span></button>
+                        <button class="action-btn"><i data-lucide="message-circle"></i><span>1.2K</span></button>
+                        <button class="action-btn"><i data-lucide="send"></i></button>
+                        <button class="action-btn"><i data-lucide="more-vertical"></i></button>
+                        <img src="https://i.pravatar.cc/150?img=47" class="audio-album">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reel-container">
+            <div class="video-box">
+                <video class="reel-video" src="/Formativa/video/programacao.mp4" loop playsinline></video>
+                <i data-lucide="heart" class="big-heart"></i>
+                <div class="play-pause-icon"><i data-lucide="play" fill="white" stroke="white" style="width: 32px; height: 32px;"></i></div>
+                <div class="video-overlay">
+                    <div class="reel-info">
+                        <div class="user-header">
+                            <img src="https://i.pravatar.cc/150?img=12" alt="Usuário">
+                            <a href="#" class="username">tech_guru</a>
+                            <button class="follow-btn">Seguir</button>
+                        </div>
+                        <p class="reel-caption">Novo setup de programação! 💻⌨️ #setup #dev</p>
+                        <div class="audio-track"><i data-lucide="music"></i><span>Lofi Hiphop Beats</span></div>
+                    </div>
+                    <div class="reel-actions">
+                        <button class="action-btn like-btn" onclick="toggleReelLike(this)"><i data-lucide="heart"></i><span class="likes-count">9.8K</span></button>
+                        <button class="action-btn"><i data-lucide="message-circle"></i><span>340</span></button>
+                        <button class="action-btn"><i data-lucide="send"></i></button>
+                        <button class="action-btn"><i data-lucide="more-vertical"></i></button>
+                        <img src="https://i.pravatar.cc/150?img=12" class="audio-album">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reel-container">
+            <div class="video-box">
+                <video class="reel-video" src="/Formativa/video/gastronomia.mp4" loop playsinline></video>
+                <i data-lucide="heart" class="big-heart"></i>
+                <div class="play-pause-icon"><i data-lucide="play" fill="white" stroke="white" style="width: 32px; height: 32px;"></i></div>
+                <div class="video-overlay">
+                    <div class="reel-info">
+                        <div class="user-header">
+                            <img src="https://i.pravatar.cc/150?img=68" alt="Usuário">
+                            <a href="#" class="username">chef_em_casa</a>
+                            <button class="follow-btn">Seguir</button>
+                        </div>
+                        <p class="reel-caption">Receita fácil para o jantar 🍝 #comida #receita</p>
+                        <div class="audio-track"><i data-lucide="music"></i><span>Italian Vibes - Classic</span></div>
+                    </div>
+                    <div class="reel-actions">
+                        <button class="action-btn like-btn" onclick="toggleReelLike(this)"><i data-lucide="heart"></i><span class="likes-count">22.1K</span></button>
+                        <button class="action-btn"><i data-lucide="message-circle"></i><span>890</span></button>
+                        <button class="action-btn"><i data-lucide="send"></i></button>
+                        <button class="action-btn"><i data-lucide="more-vertical"></i></button>
+                        <img src="https://i.pravatar.cc/150?img=68" class="audio-album">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reel-container">
+            <div class="video-box">
+                <video class="reel-video" src="/Formativa/video/treino.mp4" loop playsinline></video>
+                <i data-lucide="heart" class="big-heart"></i>
+                <div class="play-pause-icon"><i data-lucide="play" fill="white" stroke="white" style="width: 32px; height: 32px;"></i></div>
+                <div class="video-overlay">
+                    <div class="reel-info">
+                        <div class="user-header">
+                            <img src="https://i.pravatar.cc/150?img=59" alt="Usuário">
+                            <a href="#" class="username">fitness_diario</a>
+                            <button class="follow-btn">Seguir</button>
+                        </div>
+                        <p class="reel-caption">Treino de hoje concluído 💪🔥 #gym #treino</p>
+                        <div class="audio-track"><i data-lucide="music"></i><span>Phonk Music - Gym Edit</span></div>
+                    </div>
+                    <div class="reel-actions">
+                        <button class="action-btn like-btn" onclick="toggleReelLike(this)"><i data-lucide="heart"></i><span class="likes-count">15.5K</span></button>
+                        <button class="action-btn"><i data-lucide="message-circle"></i><span>156</span></button>
+                        <button class="action-btn"><i data-lucide="send"></i></button>
+                        <button class="action-btn"><i data-lucide="more-vertical"></i></button>
+                        <img src="https://i.pravatar.cc/150?img=59" class="audio-album">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reel-container">
+            <div class="video-box">
+                <video class="reel-video" src="/Formativa/video/cachorro.mp4" loop playsinline></video>
+                <i data-lucide="heart" class="big-heart"></i>
+                <div class="play-pause-icon"><i data-lucide="play" fill="white" stroke="white" style="width: 32px; height: 32px;"></i></div>
+                <div class="video-overlay">
+                    <div class="reel-info">
+                        <div class="user-header">
+                            <img src="https://i.pravatar.cc/150?img=24" alt="Usuário">
+                            <a href="#" class="username">pets_fofos</a>
+                            <button class="follow-btn">Seguir</button>
+                        </div>
+                        <p class="reel-caption">O meu cão a tentar apanhar a própria cauda 😂🐶</p>
+                        <div class="audio-track"><i data-lucide="music"></i><span>Funny Song - Comedy</span></div>
+                    </div>
+                    <div class="reel-actions">
+                        <button class="action-btn like-btn" onclick="toggleReelLike(this)"><i data-lucide="heart"></i><span class="likes-count">88.9K</span></button>
+                        <button class="action-btn"><i data-lucide="message-circle"></i><span>3.4K</span></button>
+                        <button class="action-btn"><i data-lucide="send"></i></button>
+                        <button class="action-btn"><i data-lucide="more-vertical"></i></button>
+                        <img src="https://i.pravatar.cc/150?img=24" class="audio-album">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reel-container">
+            <div class="video-box">
+                <video class="reel-video" src="/Formativa/video/quadro.mp4" loop playsinline></video>
+                <i data-lucide="heart" class="big-heart"></i>
+                <div class="play-pause-icon"><i data-lucide="play" fill="white" stroke="white" style="width: 32px; height: 32px;"></i></div>
+                <div class="video-overlay">
+                    <div class="reel-info">
+                        <div class="user-header">
+                            <img src="https://i.pravatar.cc/150?img=1" alt="Usuário">
+                            <a href="#" class="username">arte_abstrata</a>
+                            <button class="follow-btn">Seguir</button>
+                        </div>
+                        <p class="reel-caption">Processo de pintura com aguarela 🎨🖌️ #arte</p>
+                        <div class="audio-track"><i data-lucide="music"></i><span>Relaxing Piano - Art</span></div>
+                    </div>
+                    <div class="reel-actions">
+                        <button class="action-btn like-btn" onclick="toggleReelLike(this)"><i data-lucide="heart"></i><span class="likes-count">6.2K</span></button>
+                        <button class="action-btn"><i data-lucide="message-circle"></i><span>89</span></button>
+                        <button class="action-btn"><i data-lucide="send"></i></button>
+                        <button class="action-btn"><i data-lucide="more-vertical"></i></button>
+                        <img src="https://i.pravatar.cc/150?img=1" class="audio-album">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="/Formativa/assets/js/reels.js"></script>
+</body>
+</html>

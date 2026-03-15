@@ -1,0 +1,418 @@
+/* --- CONTAINER PRINCIPAL DO PERFIL --- */
+.profile-container {
+    max-width: 935px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* --- HEADER DO PERFIL (FOTO E INFO) --- */
+.profile-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 44px;
+}
+
+.profile-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-right: 30px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+    padding: 3px;
+    background: white;
+}
+
+.profile-info {
+    flex: 2;
+}
+
+.profile-user-settings {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-username {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-edit-profile {
+    background: #efefef;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-edit-profile:hover {
+    background: #dbdbdb;
+}
+
+.settings-icon {
+    cursor: pointer;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.profile-bio {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.profile-real-name {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.bio-link a {
+    color: #00376b;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* --- DESTAQUES (HIGHLIGHTS) --- */
+.highlights-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.highlight-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 80px;
+    cursor: pointer;
+}
+
+.highlight-img-border {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #dbdbdb;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.highlight-img-border img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.add-highlight {
+    width: 100%;
+    height: 100%;
+    background: #fafafa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+/* --- SISTEMA DE ABAS (TABS) --- */
+.profile-tabs {
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+
+.tab-item {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-top: 1px solid transparent;
+    margin-top: -1px;
+    letter-spacing: 1px;
+}
+
+.tab-item.active {
+    border-top: 1px solid var(--text-main);
+    color: var(--text-main);
+}
+
+/* Oculta/Mostra os conteúdos baseado no JS */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active-content {
+    display: block;
+}
+
+/* --- GRID DE POSTS --- */
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.grid-item {
+    position: relative;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    background: #000;
+    overflow: hidden;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid-item-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.grid-item:hover .grid-item-overlay {
+    opacity: 1;
+}
+
+.fill-white {
+    fill: white;
+    width: 20px;
+    height: 20px;
+}
+
+/* --- ESTADOS VAZIOS (Para Reels e Marcados) --- */
+.empty-tab-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--text-main);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.icon-circle i {
+    width: 30px;
+    height: 30px;
+}
+
+.empty-tab-state h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.empty-tab-state p {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* ==========================================
+   RESPONSIVIDADE (CELULARES)
+   ========================================== */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 15px 0; /* Remove padding lateral para as fotos grudarem na borda se quiser */
+    }
+
+    /* Muda a estrutura do header no celular */
+    .profile-header {
+        flex-direction: column;
+        padding: 0 15px;
+        margin-bottom: 20px;
+    }
+
+    .profile-image-container {
+        margin-right: 0;
+        margin-bottom: 15px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .profile-image {
+        width: 77px;
+        height: 77px;
+    }
+
+    .profile-user-settings {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .profile-actions {
+        width: 100%;
+    }
+
+    .btn-edit-profile {
+        flex: 1; /* Estica os botões para ocuparem a tela toda */
+        text-align: center;
+    }
+
+    /* Oculta os status do topo e reorganiza como o app original (embaixo da bio) */
+    .profile-stats {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        padding: 12px 0;
+        margin: 15px 0;
+        gap: 0;
+    }
+
+    .profile-stats span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        color: var(--text-secondary);
+    }
+
+    .profile-stats span strong {
+        color: var(--text-main);
+    }
+
+    .highlights-container {
+        padding: 0 15px;
+    }
+
+    /* Abas do celular (Ficam só os ícones) */
+    .profile-tabs {
+        gap: 0;
+        justify-content: space-around;
+    }
+
+    .tab-item {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .tab-item span {
+        display: none; /* Esconde o texto "PUBLICAÇÕES", "REELS", etc */
+    }
+
+    /* Grid com imagens coladas */
+    .profile-grid {
+        gap: 3px;
+    }
+}
+
+/* ==========================================
+   NOVOS ESTILOS PARA REALISMO DO PERFIL
+   ========================================== */
+
+/* Ícone no canto superior direito do post (Carrossel, Vídeo, etc) */
+.type-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: white;
+    width: 20px;
+    height: 20px;
+    filter: drop-shadow(0 0 3px rgba(0,0,0,0.5));
+    z-index: 5;
+}
+
+/* --- GRID DE REELS (Formato Vertical 9:16) --- */
+.reels-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas para reels no PC */
+    gap: 28px;
+}
+
+.reel-item {
+    position: relative;
+    aspect-ratio: 9/16; /* Formato vertical como no celular */
+    cursor: pointer;
+    background: #000;
+    overflow: hidden;
+}
+
+.reel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contador de visualizações na parte de baixo do Reel */
+.reel-views {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    z-index: 5;
+}
+
+.reel-item:hover .grid-item-overlay {
+    opacity: 1;
+}
+
+/* --- AJUSTE RESPONSIVO PARA REELS NO CELULAR --- */
+@media (max-width: 768px) {
+    .reels-grid {
+        grid-template-columns: repeat(3, 1fr); /* Volta para 3 colunas no celular */
+        gap: 3px; /* Espaço pequeno entre as fotos no celular */
+    }
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil • PixelGram</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="/Formativa/icon/favicon.svg">
+    <link rel="stylesheet" href="/Formativa/assets/css/index.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/main.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/perfil.css">
+</head>
+<body>
+
+   <header class="mobile-header">
+        <a href="index.html" class="logo">Pixel<span>Gram</span></a>
+        <i data-lucide="menu" onclick="toggleSidebar()" style="cursor: pointer;"></i>
+    </header>
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <div id="sidebar-placeholder"></div>
+
+    <main class="main-content">
+        <div class="profile-container">
+            
+            <header class="profile-header">
+                <div class="profile-image-container">
+                    <img src="https://i.pravatar.cc/150?u=me" alt="Sua Foto" class="profile-image">
+                </div>
+                
+                <section class="profile-info">
+                    <div class="profile-user-settings">
+                        <h2 class="profile-username">Tião_Brado02312</h2>
+                        <div class="profile-actions">
+                            <button class="btn-edit-profile">Editar perfil</button>
+                            <button class="btn-edit-profile">Ver arquivo</button>
+                            <i data-lucide="settings" class="settings-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="profile-stats">
+                        <span><strong>45</strong> publicações</span>
+                        <span><strong>1.2K</strong> seguidores</span>
+                        <span><strong>450</strong> seguindo</span>
+                    </div>
+
+                    <div class="profile-bio">
+                        <h1 class="profile-real-name">Nome de Exibição</h1>
+                        <p>Entusiasta de tecnologia e design 🚀<br>Criando experiências digitais incríveis.</p>
+                        <p class="bio-link">🔗 <a href="#">github.com/seu-perfil</a></p>
+                    </div>
+                </section>
+            </header>
+
+            <div class="highlights-container">
+                <div class="highlight-item">
+                    <div class="highlight-img-border"><img src="https://picsum.photos/id/10/100"></div>
+                    <span>Viagens</span>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-img-border"><img src="https://picsum.photos/id/20/100"></div>
+                    <span>Setup</span>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-img-border"><img src="https://picsum.photos/id/30/100"></div>
+                    <span>Design</span>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-img-border"><div class="add-highlight"><i data-lucide="plus"></i></div></div>
+                    <span>Novo</span>
+                </div>
+            </div>
+
+            <div class="profile-tabs">
+                <div class="tab-item active" onclick="switchTab('posts', this)">
+                    <i data-lucide="grid"></i> <span>PUBLICAÇÕES</span>
+                </div>
+                <div class="tab-item" onclick="switchTab('reels', this)">
+                    <i data-lucide="play-square"></i> <span>REELS</span>
+                </div>
+                <div class="tab-item" onclick="switchTab('tagged', this)">
+                    <i data-lucide="user-square"></i> <span>MARCADOS</span>
+                </div>
+            </div>
+
+            <div id="tab-posts" class="tab-content active-content">
+                <div class="profile-grid">
+                    <div class="grid-item">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500">
+                        <i data-lucide="layers" class="type-icon"></i> <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 152</span>
+                            <span><i data-lucide="message-circle" class="fill-white"></i> 12</span>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500">
+                        <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 89</span>
+                            <span><i data-lucide="message-circle" class="fill-white"></i> 5</span>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500">
+                        <i data-lucide="play" class="type-icon fill-white" style="width: 20px; height: 20px;"></i> <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 210</span>
+                            <span><i data-lucide="message-circle" class="fill-white"></i> 34</span>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500">
+                        <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 402</span>
+                            <span><i data-lucide="message-circle" class="fill-white"></i> 55</span>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=500">
+                        <i data-lucide="layers" class="type-icon"></i>
+                        <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 320</span>
+                            <span><i data-lucide="message-circle" class="fill-white"></i> 18</span>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500">
+                        <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 112</span>
+                            <span><i data-lucide="message-circle" class="fill-white"></i> 4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-reels" class="tab-content">
+                <div class="reels-grid">
+                    <div class="reel-item">
+                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=500&h=800&fit=crop">
+                        <div class="reel-views"><i data-lucide="play" class="fill-white" style="width: 14px; height: 14px;"></i> 1.2M</div>
+                        <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 45K</span>
+                        </div>
+                    </div>
+                    <div class="reel-item">
+                        <img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=500&h=800&fit=crop">
+                        <div class="reel-views"><i data-lucide="play" class="fill-white" style="width: 14px; height: 14px;"></i> 850K</div>
+                        <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 12K</span>
+                        </div>
+                    </div>
+                    <div class="reel-item">
+                        <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=500&h=800&fit=crop">
+                        <div class="reel-views"><i data-lucide="play" class="fill-white" style="width: 14px; height: 14px;"></i> 340K</div>
+                        <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 8.9K</span>
+                        </div>
+                    </div>
+                    <div class="reel-item">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&h=800&fit=crop">
+                        <div class="reel-views"><i data-lucide="play" class="fill-white" style="width: 14px; height: 14px;"></i> 120K</div>
+                        <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 3.2K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-tagged" class="tab-content">
+                <div class="profile-grid">
+                    <div class="grid-item">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500">
+                        <i data-lucide="user" class="type-icon fill-white" style="width: 20px; height: 20px;"></i>
+                        <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 550</span>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=500">
+                        <i data-lucide="user" class="type-icon fill-white" style="width: 20px; height: 20px;"></i>
+                        <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 890</span>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=500">
+                        <i data-lucide="user" class="type-icon fill-white" style="width: 20px; height: 20px;"></i>
+                        <div class="grid-item-overlay">
+                            <span><i data-lucide="heart" class="fill-white"></i> 340</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Carrega a sidebar global
+        async function init() {
+            try {
+                const response = await fetch('sidebar.html');
+                const html = await response.text();
+                document.getElementById('sidebar-placeholder').innerHTML = html;
+                lucide.createIcons();
+            } catch (e) { console.error("Erro ao carregar sidebar"); }
+        }
+        window.onload = init;
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            if(sidebar && overlay) {
+                sidebar.classList.toggle('show-sidebar');
+                overlay.classList.toggle('active');
+            }
+        }
+    </script>
+    <script src="/Formativa/assets/js/perfil.js"></script>
+</body>
+</html>

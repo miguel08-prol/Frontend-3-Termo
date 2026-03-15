@@ -1,0 +1,93 @@
+/* --- CONTAINER DO EXPLORAR --- */
+.explore-container {
+    max-width: 935px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Pesquisa no telemóvel (Header) */
+.mobile-search-bar {
+    display: flex;
+    align-items: center;
+    background: #efefef;
+    border-radius: 8px;
+    padding: 6px 12px;
+    width: 50%;
+}
+
+.mobile-search-bar i {
+    width: 16px;
+    height: 16px;
+    color: var(--text-secondary);
+}
+
+.mobile-search-bar input {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding-left: 8px;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* --- GRELHA DE FOTOS (GRID) --- */
+.explore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.explore-item {
+    position: relative;
+    aspect-ratio: 1/1; /* Garante que a foto seja sempre um quadrado perfeito */
+    cursor: pointer;
+    background: #000;
+    overflow: hidden;
+}
+
+.explore-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* A imagem preenche o quadrado sem distorcer */
+}
+
+/* Efeito Hover Escuro com Gostos e Comentários */
+.explore-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.explore-item:hover .explore-overlay {
+    opacity: 1;
+}
+
+.fill-white {
+    fill: white;
+    width: 20px;
+    height: 20px;
+}
+
+/* ==========================================
+   RESPONSIVIDADE (TELEMÓVEL)
+   ========================================== */
+@media (max-width: 768px) {
+    .explore-container {
+        padding: 0; /* No telemóvel as fotos encostam na lateral */
+    }
+
+    .explore-grid {
+        gap: 3px; /* Espaço bem pequenino entre as fotos, como no App */
+    }
+}

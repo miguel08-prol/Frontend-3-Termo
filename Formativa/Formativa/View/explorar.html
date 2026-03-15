@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorar • PixelGram</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="/Formativa/icon/favicon.svg">
+    
+    <link rel="stylesheet" href="/Formativa/assets/css/main.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/index.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/explorar.css">
+</head>
+<body>
+
+    <header class="mobile-header">
+        <a href="index.html" class="logo">Pixel<span>Gram</span></a>
+        <div class="mobile-search-bar">
+            <i data-lucide="search"></i>
+            <input type="text" placeholder="Pesquisar">
+        </div>
+        <i data-lucide="menu" onclick="toggleSidebar()"></i>
+    </header>
+
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <div id="sidebar-placeholder"></div>
+
+    <main class="main-content">
+        <div class="explore-container">
+            
+            <div class="explore-grid">
+                <div class="explore-item">
+                    <img src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=500">
+                    <div class="explore-overlay">
+                        <span><i data-lucide="heart" class="fill-white"></i> 4.2k</span>
+                        <span><i data-lucide="message-circle" class="fill-white"></i> 128</span>
+                    </div>
+                </div>
+                <div class="explore-item">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500">
+                    <div class="explore-overlay">
+                        <span><i data-lucide="heart" class="fill-white"></i> 856</span>
+                        <span><i data-lucide="message-circle" class="fill-white"></i> 45</span>
+                    </div>
+                </div>
+                <div class="explore-item">
+                    <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=500">
+                    <div class="explore-overlay">
+                        <span><i data-lucide="heart" class="fill-white"></i> 12k</span>
+                        <span><i data-lucide="message-circle" class="fill-white"></i> 900</span>
+                    </div>
+                </div>
+                <div class="explore-item">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500">
+                    <div class="explore-overlay">
+                        <span><i data-lucide="heart" class="fill-white"></i> 3.1k</span>
+                        <span><i data-lucide="message-circle" class="fill-white"></i> 312</span>
+                    </div>
+                </div>
+                <div class="explore-item">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500">
+                    <div class="explore-overlay">
+                        <span><i data-lucide="heart" class="fill-white"></i> 980</span>
+                        <span><i data-lucide="message-circle" class="fill-white"></i> 15</span>
+                    </div>
+                </div>
+                <div class="explore-item">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500">
+                    <div class="explore-overlay">
+                        <span><i data-lucide="heart" class="fill-white"></i> 2.4k</span>
+                        <span><i data-lucide="message-circle" class="fill-white"></i> 89</span>
+                    </div>
+                </div>
+                 <div class="explore-item">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500">
+                    <div class="explore-overlay">
+                        <span><i data-lucide="heart" class="fill-white"></i> 15k</span>
+                        <span><i data-lucide="message-circle" class="fill-white"></i> 1.2k</span>
+                    </div>
+                </div>
+                <div class="explore-item">
+                    <img src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?w=500">
+                    <div class="explore-overlay">
+                        <span><i data-lucide="heart" class="fill-white"></i> 450</span>
+                        <span><i data-lucide="message-circle" class="fill-white"></i> 3</span>
+                    </div>
+                </div>
+                <div class="explore-item">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500">
+                    <div class="explore-overlay">
+                        <span><i data-lucide="heart" class="fill-white"></i> 7.8k</span>
+                        <span><i data-lucide="message-circle" class="fill-white"></i> 540</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <script src="/Formativa/assets/js/explorar.js"></script>
+</body>
+</html>

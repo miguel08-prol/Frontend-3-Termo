@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelGram</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="/Formativa/icon/favicon.svg">
+    <link rel="stylesheet" href="/Formativa/assets/css/index.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/main.css">
+</head>
+<body>
+
+    <div id="sidebar-placeholder"></div>
+
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+     <header class="mobile-header">
+        <a href="index.html" class="logo">Pixel<span>Gram</span></a>
+        <i data-lucide="menu" onclick="toggleSidebar()" style="cursor: pointer;"></i>
+    </header>
+
+    <div id="storyModal" class="story-modal">
+        <i data-lucide="x" class="close-story" onclick="closeStory()"></i>
+        
+        <button class="story-arrow left" onclick="changeStorySlide(-1)">
+            <i data-lucide="chevron-left"></i>
+        </button>
+        <button class="story-arrow right" onclick="changeStorySlide(1)">
+            <i data-lucide="chevron-right"></i>
+        </button>
+
+        <div class="story-viewer" id="storyViewerArea">
+            <div class="story-progress-container" id="storyProgressContainer"></div>
+            
+            <div class="story-nav left" onclick="changeStorySlide(-1)"></div>
+            <div class="story-nav right" onclick="changeStorySlide(1)"></div>
+            
+            <img id="storyImg" src="" class="story-viewer-content">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="feed-container">
+            
+            <section class="stories-bar">
+                <div class="story-item" onclick="openStory('usuario1')">
+                    <div class="story-ring"><img src="https://i.pravatar.cc/150?u=1" class="story-img"></div>
+                    <span>usuario1</span>
+                </div>
+                <div class="story-item" onclick="openStory('natureza')">
+                    <div class="story-ring"><img src="https://i.pravatar.cc/150?u=2" class="story-img"></div>
+                    <span>natureza</span>
+                </div>
+                <div class="story-item" onclick="openStory('viagem')">
+                    <div class="story-ring"><img src="https://i.pravatar.cc/150?u=3" class="story-img"></div>
+                    <span>viagem</span>
+                </div>
+            </section>
+
+            <div class="feed-posts">
+                
+                <article class="post">
+                    <div class="post-header">
+                        <div class="post-user-info">
+                            <img src="https://i.pravatar.cc/150?u=a" class="user-avatar">
+                            <span class="username">viagens_incriveis</span>
+                        </div>
+                        <i data-lucide="more-horizontal"></i>
+                    </div>
+                    <div class="post-content" onclick="handleHeartPop(this)">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800" alt="Praia">
+                        <i data-lucide="heart" class="heart-pop" style="width: 80px; height: 80px; fill: white;"></i>
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-actions">
+                            <div class="actions-left">
+                                <i data-lucide="heart" onclick="toggleLike(this)"></i>
+                                <i data-lucide="message-circle"></i>
+                                <i data-lucide="send"></i>
+                            </div>
+                            <i data-lucide="bookmark" onclick="toggleSave(this)"></i>
+                        </div>
+                        <span class="likes-count" data-likes="1250">1.250 gostei</span>
+                        <div class="post-caption">
+                            <span class="caption-username">viagens_incriveis</span>
+                            Aproveitando o pôr do sol nesta praia maravilhosa! ☀️🌊
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <div class="post-header">
+                        <div class="post-user-info">
+                            <img src="https://i.pravatar.cc/150?u=chef" class="user-avatar">
+                            <span class="username">master_chef_br</span>
+                        </div>
+                        <i data-lucide="more-horizontal"></i>
+                    </div>
+                    <div class="post-content" onclick="handleHeartPop(this)">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800" alt="Pizza">
+                        <i data-lucide="heart" class="heart-pop" style="width: 80px; height: 80px; fill: white;"></i>
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-actions">
+                            <div class="actions-left">
+                                <i data-lucide="heart" onclick="toggleLike(this)"></i>
+                                <i data-lucide="message-circle"></i>
+                                <i data-lucide="send"></i>
+                            </div>
+                            <i data-lucide="bookmark" onclick="toggleSave(this)"></i>
+                        </div>
+                        <span class="likes-count" data-likes="3421">3.421 gostei</span>
+                        <div class="post-caption">
+                            <span class="caption-username">master_chef_br</span>
+                            A melhor pizza artesanal que você verá hoje! 🍕🔥 #foodie
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <div class="post-header">
+                        <div class="post-user-info">
+                            <img src="https://i.pravatar.cc/150?u=c" class="user-avatar">
+                            <span class="username">code_master</span>
+                        </div>
+                        <i data-lucide="more-horizontal"></i>
+                    </div>
+                    <div class="post-content" onclick="handleHeartPop(this)">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800" alt="Workspace">
+                        <i data-lucide="heart" class="heart-pop" style="width: 80px; height: 80px; fill: white;"></i>
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-actions">
+                            <div class="actions-left">
+                                <i data-lucide="heart" onclick="toggleLike(this)"></i>
+                                <i data-lucide="message-circle"></i>
+                                <i data-lucide="send"></i>
+                            </div>
+                            <i data-lucide="bookmark" onclick="toggleSave(this)"></i>
+                        </div>
+                        <span class="likes-count" data-likes="2105">2.105 gostei</span>
+                        <div class="post-caption">
+                            <span class="caption-username">code_master</span>
+                            Foco total no novo projeto! 💻🚀
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <div class="post-header">
+                        <div class="post-user-info">
+                            <img src="https://i.pravatar.cc/150?u=b" class="user-avatar">
+                            <span class="username">nature_shots</span>
+                        </div>
+                        <i data-lucide="more-horizontal"></i>
+                    </div>
+                    <div class="post-content">
+                        <video loop muted playsinline onclick="togglePlay(this)">
+                            <source src="/Formativa/video/carro.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-actions">
+                            <div class="actions-left">
+                                <i data-lucide="heart" onclick="toggleLike(this)"></i>
+                                <i data-lucide="message-circle"></i>
+                                <i data-lucide="send"></i>
+                            </div>
+                            <i data-lucide="bookmark" onclick="toggleSave(this)"></i>
+                        </div>
+                        <span class="likes-count" data-likes="843">843 gostei</span>
+                        <div class="post-caption">
+                            <span class="caption-username">nature_shots</span>
+                            Dê um clique no vídeo para pausar/tocar! 🌿✨
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post" id="post-carousel-1">
+                    <div class="post-header">
+                        <div class="post-user-info">
+                            <img src="https://i.pravatar.cc/150?u=car" class="user-avatar">
+                            <span class="username">auto_lovers</span>
+                        </div>
+                        <i data-lucide="more-horizontal"></i>
+                    </div>
+                    
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="track-carousel-1">
+                            <div class="post-content" onclick="handleHeartPop(this)">
+                                <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800">
+                                <i data-lucide="heart" class="heart-pop" style="width: 80px; height: 80px; fill: white;"></i>
+                            </div>
+                            <div class="post-content" onclick="handleHeartPop(this)">
+                                <img src="https://images.unsplash.com/photo-1503376712344-652d1b8222a7?w=800">
+                                <i data-lucide="heart" class="heart-pop" style="width: 80px; height: 80px; fill: white;"></i>
+                            </div>
+                        </div>
+                        <button class="carousel-btn left" onclick="moveCarousel('carousel-1', -1)">&#10094;</button>
+                        <button class="carousel-btn right" onclick="moveCarousel('carousel-1', 1)">&#10095;</button>
+                        <div class="carousel-dots" id="dots-carousel-1">
+                            <span class="dot active"></span><span class="dot"></span>
+                        </div>
+                    </div>
+
+                    <div class="post-footer">
+                        <div class="post-actions">
+                            <div class="actions-left">
+                                <i data-lucide="heart" onclick="toggleLike(this)"></i>
+                                <i data-lucide="message-circle"></i>
+                                <i data-lucide="send"></i>
+                            </div>
+                            <i data-lucide="bookmark" onclick="toggleSave(this)"></i>
+                        </div>
+                        <span class="likes-count" data-likes="8900">8.900 gostei</span>
+                        <div class="post-caption">
+                            <span class="caption-username">auto_lovers</span>
+                            Deslize para ver essa máquina de todos os ângulos! 🏎️💨
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post" id="post-carousel-2">
+                    <div class="post-header">
+                        <div class="post-user-info">
+                            <img src="https://i.pravatar.cc/150?u=arch" class="user-avatar">
+                            <span class="username">design_moderno</span>
+                        </div>
+                        <i data-lucide="more-horizontal"></i>
+                    </div>
+                    
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="track-carousel-2">
+                            <div class="post-content" onclick="handleHeartPop(this)">
+                                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800">
+                                <i data-lucide="heart" class="heart-pop" style="width: 80px; height: 80px; fill: white;"></i>
+                            </div>
+                            <div class="post-content" onclick="handleHeartPop(this)">
+                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800">
+                                <i data-lucide="heart" class="heart-pop" style="width: 80px; height: 80px; fill: white;"></i>
+                            </div>
+                            <div class="post-content" onclick="handleHeartPop(this)">
+                                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800">
+                                <i data-lucide="heart" class="heart-pop" style="width: 80px; height: 80px; fill: white;"></i>
+                            </div>
+                        </div>
+                        <button class="carousel-btn left" onclick="moveCarousel('carousel-2', -1)">&#10094;</button>
+                        <button class="carousel-btn right" onclick="moveCarousel('carousel-2', 1)">&#10095;</button>
+                        <div class="carousel-dots" id="dots-carousel-2">
+                            <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+                        </div>
+                    </div>
+
+                    <div class="post-footer">
+                        <div class="post-actions">
+                            <div class="actions-left">
+                                <i data-lucide="heart" onclick="toggleLike(this)"></i>
+                                <i data-lucide="message-circle"></i>
+                                <i data-lucide="send"></i>
+                            </div>
+                            <i data-lucide="bookmark" onclick="toggleSave(this)"></i>
+                        </div>
+                        <span class="likes-count" data-likes="450">450 gostei</span>
+                        <div class="post-caption">
+                            <span class="caption-username">design_moderno</span>
+                            Detalhes desta casa incrível. Arrasta pro lado 👉
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </main>
+
+    <div id="createModal" class="modal-overlay"></div>
+
+    <script>
+        // Função para carregar a sidebar e os ícones ao iniciar
+        async function init() {
+            try {
+                const response = await fetch('sidebar.html');
+                const html = await response.text();
+                document.getElementById('sidebar-placeholder').innerHTML = html;
+                lucide.createIcons(); // Ativa os ícones após carregar a barra lateral
+            } catch (e) { 
+                console.error("Erro ao carregar sidebar. Certifique-se de estar rodando um servidor local."); 
+            }
+        }
+        window.onload = init;
+    </script>
+    <script src="/Formativa/assets/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens • PixelGram</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="/Formativa/icon/favicon.svg">
+    
+    <link rel="stylesheet" href="/Formativa/assets/css/main.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/index.css">
+    <link rel="stylesheet" href="/Formativa/assets/css/mensagens.css">
+</head>
+<body>
+
+    <header class="mobile-header">
+        <a href="index.html" class="logo">Pixel<span>Gram</span></a>
+        <i data-lucide="menu" onclick="toggleSidebar()" style="cursor: pointer;"></i>
+    </header>
+
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <div id="sidebar-placeholder"></div>
+
+    <main class="main-content">
+        <div class="messenger-container">
+            
+            <aside class="inbox-panel">
+                <div class="inbox-header">
+                    <h2>Tião_Brado02312 <i data-lucide="chevron-down"></i></h2>
+                    <i data-lucide="edit"></i>
+                </div>
+                <div class="inbox-list">
+                    <div class="chat-item active">
+                        <img src="https://i.pravatar.cc/150?u=a" alt="User">
+                        <div class="chat-info">
+                            <span class="chat-name">Maria Silva</span>
+                            <span class="chat-preview">Online agora</span>
+                        </div>
+                    </div>
+                    <div class="chat-item">
+                        <img src="https://i.pravatar.cc/150?u=b" alt="User">
+                        <div class="chat-info">
+                            <span class="chat-name">João Costa</span>
+                            <span class="chat-preview">Visto há 2h</span>
+                        </div>
+                    </div>
+                    <div class="chat-item">
+                        <img src="https://i.pravatar.cc/150?u=c" alt="User">
+                        <div class="chat-info">
+                            <span class="chat-name">Ana_fotos</span>
+                            <span class="chat-preview">Reagiu a um storie</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="messenger-box">
+                <div class="chat-window-header">
+                    <div class="chat-header-user">
+                        <img src="https://i.pravatar.cc/150?u=a" id="currentChatImg" alt="User">
+                        <span id="currentChatName">Maria Silva</span>
+                    </div>
+                    <div class="chat-header-icons">
+                        <i data-lucide="phone"></i>
+                        <i data-lucide="video"></i>
+                        <i data-lucide="info"></i>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message received">Oi! Vi que ficaste online.</div>
+                </div>
+                
+                <div class="chat-input-area">
+                    <div class="input-wrapper">
+                        <i data-lucide="smile" style="color: var(--text-secondary);"></i>
+                        <input type="text" id="messageInput" placeholder="Escreva uma mensagem... (Aperte Enter)">
+                        <div class="input-actions">
+                            <i data-lucide="image" style="color: var(--text-secondary);"></i>
+                            <i data-lucide="heart" onclick="sendHeart()" style="cursor: pointer; color: #ed4956;"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <script src="/Formativa/assets/js/mensagens.js"></script>
+</body>
+</html>
