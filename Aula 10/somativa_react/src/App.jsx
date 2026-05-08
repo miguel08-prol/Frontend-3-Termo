@@ -1,3 +1,4 @@
+// App.jsx
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -13,6 +14,44 @@ function App() {
   const [viewMode, setViewMode] = useState("grid");
   const [toast, setToast] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [editingEvent, setEditingEvent] = useState(null);
+  const [showClearModal, setShowClearModal] = useState(false); // Novo estado para modal de limpar
+  const [editFormData, setEditFormData] = useState({
+    title: "",
+    type: "Palestra",
+    vagas: "30"
+  });
+
+  // Verificar se é mobile no carregamento
+  useEffect(() => {
+    const checkMobile = () => {
+      if (window.innerWidth <= 1024) {
+        setSidebarOpen(false);
+      } else {
+        setSidebarOpen(true);
+      }
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Fechar sidebar quando clicar fora no mobile
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (window.innerWidth <= 1024 && sidebarOpen) {
+        const sidebar = document.querySelector('.sidebar');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        if (sidebar && !sidebar.contains(e.target) && toggle && !toggle.contains(e.target)) {
+          setSidebarOpen(false);
+        }
+      }
+    };
+    
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [sidebarOpen]);
 
   // Função para mostrar toast
   const showToast = (message, type = 'success') => {
@@ -55,6 +94,67 @@ function App() {
     setEventList([newEvent, ...eventList]);
     setEventTitle("");
     showToast(`Evento "${eventTitle}" criado com sucesso!`, 'success');
+  };
+
+  // Função para abrir modal de edição
+  const openEditModal = (event) => {
+    setEditingEvent(event);
+    setEditFormData({
+      title: event.title,
+      type: event.type,
+      vagas: event.vagas.toString()
+    });
+  };
+
+  // Função para fechar modal de edição
+  const closeEditModal = () => {
+    setEditingEvent(null);
+    setEditFormData({
+      title: "",
+      type: "Palestra",
+      vagas: "30"
+    });
+  };
+
+  // Função para salvar edição
+  const saveEditEvent = (e) => {
+    e.preventDefault();
+    if (!editFormData.title.trim()) {
+      showToast('Por favor, insira o nome do evento!', 'error');
+      return;
+    }
+
+    setEventList(eventList.map(evt => {
+      if (evt.id === editingEvent.id) {
+        return {
+          ...evt,
+          title: editFormData.title,
+          type: editFormData.type,
+          vagas: parseInt(editFormData.vagas)
+        };
+      }
+      return evt;
+    }));
+
+    showToast(`Evento "${editFormData.title}" atualizado com sucesso!`, 'success');
+    closeEditModal();
+  };
+
+  // Função para abrir modal de confirmação de limpeza
+  const openClearModal = () => {
+    if (eventList.length === 0) {
+      showToast('Nenhum evento para limpar!', 'info');
+      return;
+    }
+    setShowClearModal(true);
+  };
+
+  // Função para confirmar limpeza
+  const confirmClearAll = () => {
+    setEventList([]);
+    localStorage.removeItem("@eventpulse_data");
+    showToast('Todos os eventos foram removidos!', 'error');
+    setShowClearModal(false);
   };
 
   const toggleStatus = (id) => {
@@ -100,19 +200,6 @@ function App() {
       }
     } else if (event && event.vagas === 0) {
       showToast('Vagas esgotadas para este evento!', 'error');
-    }
-  };
-
-  const limparCronograma = () => {
-    if (eventList.length === 0) {
-      showToast('Nenhum evento para limpar!', 'info');
-      return;
-    }
-    
-    if (window.confirm('⚠️ ATENÇÃO: Isso irá apagar TODOS os eventos permanentemente. Continuar?')) {
-      setEventList([]);
-      localStorage.removeItem("@eventpulse_data");
-      showToast('Todos os eventos foram removidos!', 'error');
     }
   };
 
@@ -215,8 +302,13 @@ function App() {
 
       {/* Mobile Menu Toggle */}
       <button className="mobile-menu-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
-        ☰
+        {sidebarOpen ? '✕' : '☰'}
       </button>
+
+      {/* Sidebar Overlay para mobile */}
+      {sidebarOpen && window.innerWidth <= 1024 && (
+        <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>
+      )}
 
       {/* Sidebar */}
       <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
@@ -226,27 +318,28 @@ function App() {
             <span className="logo-text">EventPulse</span>
           </div>
           <p className="logo-subtitle">Academic Management</p>
+          <button className="sidebar-close-btn" onClick={() => setSidebarOpen(false)}>✕</button>
         </div>
 
         <nav className="sidebar-nav">
           <div className="nav-section">
             <h4>Menu Principal</h4>
-            <button className={`nav-item ${activeTab === "todos" ? "active" : ""}`} onClick={() => setActiveTab("todos")}>
+            <button className={`nav-item ${activeTab === "todos" ? "active" : ""}`} onClick={() => { setActiveTab("todos"); if(window.innerWidth <= 1024) setSidebarOpen(false); }}>
               <span className="nav-icon">📊</span>
               <span>Todos Eventos</span>
               <span className="nav-badge">{stats.total}</span>
             </button>
-            <button className={`nav-item ${activeTab === "andamento" ? "active" : ""}`} onClick={() => setActiveTab("andamento")}>
+            <button className={`nav-item ${activeTab === "andamento" ? "active" : ""}`} onClick={() => { setActiveTab("andamento"); if(window.innerWidth <= 1024) setSidebarOpen(false); }}>
               <span className="nav-icon">⚡</span>
               <span>Em Andamento</span>
               <span className="nav-badge">{stats.emAndamento}</span>
             </button>
-            <button className={`nav-item ${activeTab === "agendados" ? "active" : ""}`} onClick={() => setActiveTab("agendados")}>
+            <button className={`nav-item ${activeTab === "agendados" ? "active" : ""}`} onClick={() => { setActiveTab("agendados"); if(window.innerWidth <= 1024) setSidebarOpen(false); }}>
               <span className="nav-icon">📅</span>
               <span>Agendados</span>
               <span className="nav-badge">{stats.agendados}</span>
             </button>
-            <button className={`nav-item ${activeTab === "encerrados" ? "active" : ""}`} onClick={() => setActiveTab("encerrados")}>
+            <button className={`nav-item ${activeTab === "encerrados" ? "active" : ""}`} onClick={() => { setActiveTab("encerrados"); if(window.innerWidth <= 1024) setSidebarOpen(false); }}>
               <span className="nav-icon">✅</span>
               <span>Encerrados</span>
               <span className="nav-badge">{stats.encerrados}</span>
@@ -256,7 +349,7 @@ function App() {
           <div className="nav-section">
             <h4>Visualização</h4>
             <button className="nav-item" onClick={() => setShowStats(!showStats)}>
-              <span className="nav-icon">📈</span>
+              <span className="nav-icon">{showStats ? '📉' : '📈'}</span>
               <span>{showStats ? 'Ocultar' : 'Mostrar'} Estatísticas</span>
             </button>
             <button className="nav-item" onClick={() => setViewMode(viewMode === "grid" ? "list" : "grid")}>
@@ -267,7 +360,7 @@ function App() {
 
           <div className="nav-section">
             <h4>Configurações</h4>
-            <button className="nav-item" onClick={limparCronograma}>
+            <button className="nav-item" onClick={openClearModal}>
               <span className="nav-icon">🗑️</span>
               <span>Limpar Todos</span>
             </button>
@@ -279,7 +372,7 @@ function App() {
             <span className="status-dot"></span>
             <span>Sistema Online</span>
           </div>
-          <small>v2.0.0</small>
+          <small>v2.1.0</small>
         </div>
       </aside>
 
@@ -288,8 +381,13 @@ function App() {
         {/* Header */}
         <header className="dashboard-header">
           <div className="header-left">
-            <h1>Dashboard de Eventos</h1>
-            <p>Gerencie seus eventos acadêmicos de forma profissional</p>
+            <button className="sidebar-toggle-desktop" onClick={() => setSidebarOpen(!sidebarOpen)}>
+              {sidebarOpen ? '◀' : '▶'}
+            </button>
+            <div>
+              <h1>Dashboard de Eventos</h1>
+              <p>Gerencie seus eventos acadêmicos de forma profissional</p>
+            </div>
           </div>
           <div className="header-right">
             <div className="search-bar">
@@ -485,7 +583,7 @@ function App() {
                         className="action-btn inscrever"
                         disabled={vagasInfo.disabled}
                       >
-                        {vagasInfo.disabled ? "🔴 Esgotado" : "✅ Inscrever Aluno"}
+                        {vagasInfo.disabled ? "🔴 Esgotado" : "✅ Inscrever"}
                       </button>
                       <button 
                         onClick={() => toggleStatus(item.id)} 
@@ -494,6 +592,12 @@ function App() {
                         {item.status === "Agendado" && "▶️ Iniciar"}
                         {item.status === "Em Andamento" && "⏹️ Encerrar"}
                         {item.status === "Encerrado" && "🔄 Reabrir"}
+                      </button>
+                      <button 
+                        onClick={() => openEditModal(item)} 
+                        className="action-btn edit"
+                      >
+                        ✏️ Editar
                       </button>
                       <button 
                         onClick={() => deleteEvent(item.id)} 
@@ -510,16 +614,16 @@ function App() {
         </div>
       </main>
 
-{/* Substitua o span pelo ícone de imagem */}
-<button className="info-fab" onClick={() => setShowModal(true)}>
-  <img 
-    src="/img/favicon_css.png" 
-    alt="Info" 
-    style={{ width: '30px', height: '30px' }} 
-  />
-</button>
+      {/* FAB Button */}
+      <button className="info-fab" onClick={() => setShowModal(true)}>
+        <img 
+          src="/img/favicon_css.png" 
+          alt="Info" 
+          style={{ width: '30px', height: '30px' }} 
+        />
+      </button>
 
-      {/* Modal */}
+      {/* Modal de Informações */}
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-container" onClick={(e) => e.stopPropagation()}>
@@ -532,6 +636,7 @@ function App() {
               <ul>
                 <li>✅ <strong>Dashboard Profissional</strong> - Layout moderno com sidebar</li>
                 <li>✅ <strong>CRUD Completo</strong> - Criar, ler, atualizar e deletar eventos</li>
+                <li>✅ <strong>Edição de Eventos</strong> - Edite nome, tipo e vagas</li>
                 <li>✅ <strong>Sistema de Abas</strong> - Filtros por status (Agendado/Andamento/Encerrado)</li>
                 <li>✅ <strong>Busca em Tempo Real</strong> - Filtro instantâneo por título</li>
                 <li>✅ <strong>Workshops em Destaque</strong> - Sempre no topo da lista</li>
@@ -540,12 +645,96 @@ function App() {
                 <li>✅ <strong>Persistência localStorage</strong> - Dados salvos automaticamente</li>
                 <li>✅ <strong>Estatísticas em Tempo Real</strong> - Cards com métricas atualizadas</li>
                 <li>✅ <strong>Design Responsivo</strong> - Adaptável a todos dispositivos</li>
+                <li>✅ <strong>Sidebar Colapsável</strong> - Ocultar/mostrar sidebar</li>
                 <li>✅ <strong>Visualização Grid/Lista</strong> - Duas formas de exibir eventos</li>
                 <li>✅ <strong>Animações Suaves</strong> - Transições e feedback visual</li>
               </ul>
               <div className="modal-footer">
                 <p>✨ Sistema completo para gestão de eventos acadêmicos!</p>
-                <small>Versão 2.0 - Desenvolvido com React</small>
+                <small>Versão 2.1 - Desenvolvido com React</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de Edição */}
+      {editingEvent && (
+        <div className="modal-overlay" onClick={closeEditModal}>
+          <div className="modal-container modal-edit" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header modal-edit-header">
+              <h2>✏️ Editar Evento</h2>
+              <button className="modal-close" onClick={closeEditModal}>✕</button>
+            </div>
+            <form onSubmit={saveEditEvent}>
+              <div className="modal-body-edit">
+                <div className="form-group-edit">
+                  <label>Nome do Evento</label>
+                  <input
+                    type="text"
+                    value={editFormData.title}
+                    onChange={(e) => setEditFormData({...editFormData, title: e.target.value})}
+                    required
+                    autoFocus
+                  />
+                </div>
+                <div className="form-group-edit">
+                  <label>Tipo do Evento</label>
+                  <select 
+                    value={editFormData.type} 
+                    onChange={(e) => setEditFormData({...editFormData, type: e.target.value})}
+                  >
+                    <option value="Palestra">🎤 Palestra</option>
+                    <option value="Workshop">🔧 Workshop</option>
+                    <option value="Painel">👥 Painel</option>
+                  </select>
+                </div>
+                <div className="form-group-edit">
+                  <label>Número de Vagas</label>
+                  <select 
+                    value={editFormData.vagas} 
+                    onChange={(e) => setEditFormData({...editFormData, vagas: e.target.value})}
+                  >
+                    <option value="10">10 vagas</option>
+                    <option value="30">30 vagas</option>
+                    <option value="50">50 vagas</option>
+                    <option value="100">100 vagas</option>
+                  </select>
+                </div>
+                <div className="edit-actions">
+                  <button type="button" className="btn-cancel" onClick={closeEditModal}>
+                    Cancelar
+                  </button>
+                  <button type="submit" className="btn-save">
+                    💾 Salvar Alterações
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de Confirmação para Limpar Todos */}
+      {showClearModal && (
+        <div className="modal-overlay" onClick={() => setShowClearModal(false)}>
+          <div className="modal-container modal-clear" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header modal-clear-header">
+              <h2>⚠️ Atenção!</h2>
+              <button className="modal-close" onClick={() => setShowClearModal(false)}>✕</button>
+            </div>
+            <div className="modal-body-clear">
+              <div className="clear-icon">🗑️</div>
+              <h3>Limpar Todos os Eventos?</h3>
+              <p>Isso irá apagar <strong>TODOS os {eventList.length} eventos</strong> permanentemente.</p>
+              <p className="warning-text">Esta ação não pode ser desfeita!</p>
+              <div className="clear-actions">
+                <button className="btn-cancel-clear" onClick={() => setShowClearModal(false)}>
+                  Cancelar
+                </button>
+                <button className="btn-confirm-clear" onClick={confirmClearAll}>
+                  Sim, Limpar Tudo
+                </button>
               </div>
             </div>
           </div>
