@@ -510,10 +510,14 @@ function App() {
         </div>
       </main>
 
-      {/* FAB Button */}
-      <button className="info-fab" onClick={() => setShowModal(true)}>
-        <span className="fab-icon">✨</span>
-      </button>
+{/* Substitua o span pelo ícone de imagem */}
+<button className="info-fab" onClick={() => setShowModal(true)}>
+  <img 
+    src="/img/favicon_css.png" 
+    alt="Info" 
+    style={{ width: '30px', height: '30px' }} 
+  />
+</button>
 
       {/* Modal */}
       {showModal && (
